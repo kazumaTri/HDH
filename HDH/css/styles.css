@@ -1,0 +1,70 @@
+body {
+  font-family: sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.circular-icon-container {
+  position: relative;
+}
+.circular-icon-container:hover .circular-icon {
+  transform: scale(1.1);
+}
+.circular-icon {
+  transition: transform 0.2s;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon-button-row {
+  margin-bottom: 20px;
+}
+.icon-button {
+  border-radius: 50%;
+  padding: 12px;
+  width: 60px;
+  height: 60px;
+  transition: transform 0.2s;
+}
+.icon-button:hover {
+  transform: scale(1.1);
+}
+.icon-button-primary {
+  border: 1px solid #add8e6;
+}
+.icon-button-success {
+  border: 1px solid #90ee90;
+}
+.icon-button-warning {
+  border: 1px solid #ffdd99;
+}
+
+.icon-btn {
+  font-size: 24px;
+  margin: 0;
+}
+.form-check-input:hover {
+  cursor: pointer;
+}
+.form-check:hover .form-check-label {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.footer-text {
+  font-size: 14px;
+}

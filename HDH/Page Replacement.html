@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Replacement Algorithm Simulation</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/styles2.css" />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <!-- Header -->
+      <div class="header text-center mb-4">
+        <div class="header-icon mb-3">
+          <i class="fas fa-memory fa-3x text-primary"></i>
+        </div>
+        <h1 class="display-4">Page Replacement</h1>
+      </div>
+
+      <!-- Button Container -->
+      <div class="text-center mb-4">
+        <button class="btn btn-lg btn-outline-primary m-2">
+          Dynamic Partitioning
+        </button>
+        <button class="btn btn-lg btn-outline-secondary m-2 active">
+          Page Replacement
+        </button>
+      </div>
+
+      <!-- Data Entry -->
+      <div class="data-entry mb-5">
+        <h2 class="mb-4">Data Entry</h2>
+        <div class="form-group">
+          <label for="pageReferences">Page Reference String</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pageReferences"
+            placeholder="For example: 7, 0, 1, 2, 0, 3, 0, 4, 2"
+          />
+        </div>
+        <div class="form-group">
+          <label for="frameCount">Number of Frames</label>
+          <input
+            type="number"
+            class="form-control"
+            id="frameCount"
+            placeholder="For example: 3"
+          />
+        </div>
+        <div class="form-group">
+          <label for="algorithm">Choose Algorithm</label>
+          <select class="form-control" id="algorithm">
+            <option>FIFO</option>
+            <option>LRU</option>
+            <option>MIN/Optimal</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="runAlgorithm()">
+          Run Algorithm
+        </button>
+      </div>
+
+      <!-- Result Table -->
+      <div class="result">
+        <h2 class="mb-4">Result</h2>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Page Reference</th>
+              <th>Frames</th>
+              <th>Page Fault</th>
+              <th>Explanation</th>
+            </tr>
+          </thead>
+          <tbody id="resultBody">
+            <!-- Table content will be inserted dynamically -->
+          </tbody>
+        </table>
+
+        <!-- New Section for displaying total page faults -->
+        <div id="totalPageFaults" class="mt-4">
+          <h4>
+            Total Number of Page Faults: <span id="pageFaultsCount">0</span>
+          </h4>
+        </div>
+      </div>
+
+      <!-- Back to Home Button -->
+      <div class="text-center mt-4">
+        <a href="index.html" class="btn btn-secondary btn-lg">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/page.js"></script>
+  </body>
+</html>
