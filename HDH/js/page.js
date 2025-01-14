@@ -41,20 +41,20 @@ function lru(pageReferences, framesCount) {
   let frames = new Array(framesCount).fill(null);
   let pageFaults = 0;
   let pageFaultsPerStep = [];
+  let cache = new Map();
 
   pageReferences.forEach((page) => {
     const prevPageFaults = pageFaults;
-    if (!frames.includes(page)) {
+    if (!cache.has(page)) {
       if (frames.includes(null)) {
         let emptyIndex = frames.indexOf(null);
         frames[emptyIndex] = page;
       } else {
-        frames.shift(); // Xóa trang đầu tiên (ít được sử dụng nhất)
-        frames.push(page); // Thêm trang mới vào cuối
+        frames.shift();
+        frames.push(page);
       }
       pageFaults++;
     } else {
-      // Di chuyển trang vừa truy cập lên cuối bộ nhớ
       frames.splice(frames.indexOf(page), 1);
       frames.push(page);
     }
@@ -80,15 +80,14 @@ function optimal(pageReferences, framesCount) {
     if (!frames.includes(page)) {
       pageFaults++;
       if (frames.includes(null)) {
-        frames[frames.indexOf(null)] = page; // Nếu có chỗ trống, thêm trang vào
+        frames[frames.indexOf(null)] = page;
       } else {
-        // Tìm trang sẽ không được sử dụng lâu nhất
         let futureUse = frames.map((frame) => {
           let futureIndex = pageReferences.slice(index + 1).indexOf(frame);
-          return futureIndex === -1 ? Infinity : futureIndex; // Không xuất hiện trong tương lai thì trả về Infinity
+          return futureIndex === -1 ? Infinity : futureIndex;
         });
-        let farthestPageIndex = futureUse.indexOf(Math.max(...futureUse)); // Tìm trang sẽ không xuất hiện lâu nhất
-        frames[farthestPageIndex] = page; // Thay thế trang đó
+        let farthestPageIndex = futureUse.indexOf(Math.max(...futureUse));
+        frames[farthestPageIndex] = page;
       }
     }
     const pageFault = pageFaults > prevPageFaults ? "Yes" : "No";

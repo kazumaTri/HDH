@@ -9,6 +9,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="css/styles2.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -16,24 +20,26 @@
       <!-- Header -->
       <div class="header text-center mb-4">
         <div class="header-icon mb-3">
-          <i class="fas fa-project-diagram fa-3x text-primary"></i>
+          <i class="fas fa-project-diagram fa-3x text-light"></i>
         </div>
-        <h1 class="display-4">Dynamic Partitioning</h1>
+        <h1 class="display-4 text-light">Dynamic Partitioning</h1>
       </div>
 
       <!-- Button Container -->
       <div class="text-center mb-4">
-        <button class="btn btn-lg btn-outline-primary m-2 active">
+        <button class="btn btn-lg btn-outline-light m-2 active shadow-sm">
           Dynamic Partitioning
         </button>
-        <button class="btn btn-lg btn-outline-secondary m-2"> 
-         <a href="Page Replacement.html"> Page Replacement</a>
+        <button class="btn btn-lg btn-outline-light m-2 shadow-sm">
+          <a href="Page Replacement.html" class="text-light"
+            >Page Replacement</a
+          >
         </button>
       </div>
 
       <!-- Data Entry -->
-      <div class="data-entry mb-5">
-        <h2 class="mb-4">Data Entry</h2>
+      <div class="data-entry mb-5 shadow-lg">
+        <h2 class="mb-4 text-primary">Data Entry</h2>
         <div class="form-group">
           <label for="partitionSizes">Partition Sizes</label>
           <input
@@ -60,48 +66,76 @@
             <option>Worst Fit</option>
           </select>
         </div>
+        <div class="form-group">
+          <label for="displayOption">Chọn kiểu hiển thị</label>
+          <select class="form-control" id="displayOption">
+            <option value="table">Bảng</option>
+            <option value="chart">Biểu đồ</option>
+          </select>
+        </div>
         <button
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary btn-lg btn-block shadow-sm"
           onclick="runDynamicPartitioning()"
         >
           Run Allocation
         </button>
       </div>
 
-      <!-- Result Table -->
-      <div class="result">
-        <h2 class="mb-4">Result</h2>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Process</th>
-              <th>Size</th>
-              <th>Partition</th>
-              <th>Internal Fragmentation</th>
-              <th>Explanation</th>
-              <!-- Cột mới -->
-            </tr>
-          </thead>
-          <tbody id="resultBody">
-            <!-- Table content will be inserted dynamically -->
-          </tbody>
-        </table>
+      <!-- Result Output-->
+      <div id="result-output" class="d-flex">
+        <!-- Result Table -->
+        <div class="result" id="table-view" style="flex: 1; display: none">
+          <h2 class="mb-4 text-primary">Result</h2>
+          <table class="table table-bordered table-hover">
+            <thead class="bg-primary text-light">
+              <tr>
+                <th>Process</th>
+                <th>Size</th>
+                <th>Partition</th>
+                <th>Internal Fragmentation</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody id="resultBody">
+              <!-- Table content will be inserted dynamically -->
+            </tbody>
+          </table>
+        </div>
+        <!-- Chart Container -->
+        <div id="chart-view" style="flex: 1">
+          <h5 class="mb-3 text-primary">Biểu đồ</h5>
+          <div
+            class="chart-placeholder"
+            id="chartContainer"
+            style="
+              height: 300px;
+              border: 1px solid #ccc;
+              margin-bottom: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <i class="bi bi-pie-chart-fill" style="font-size: 50px"></i>
+            <p class="text-center m-0">
+              Chart Displayed here after Run Algorithm Button is clicked
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home Button -->
+      <div class="text-center mt-4">
+        <a href="index.html" class="btn btn-secondary btn-lg shadow-sm"
+          >Back to Home</a
+        >
       </div>
     </div>
-
-     <!-- Back to Home Button -->
-     <div class="text-center mt-4">
-      <a href="index.html" class="btn btn-secondary btn-lg">Back to Home</a>
-    </div>
-  </div>
     <!-- Scripts -->
-    <script src="js/Dyna.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="js/dynamic.js"></script>
+    <script src="js/dynamicPartitioning.js"></script>
   </body>
 </html>
-
-cho them cai nut tro ve trang chu
